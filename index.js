@@ -1,7 +1,7 @@
 import express from "express";
 
 const app = express();
-const port = 3000;
+const port = 3000; // process.env.port ?? 1234
 
 app.get("/", (req, res) => {
   const homePage = "<h1>Bienvenidos a mi Servidor</h1>";
