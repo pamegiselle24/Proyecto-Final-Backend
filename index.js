@@ -10,16 +10,19 @@ app.get("/", (req, res) => {
 
 app.get("/users", (req, res) => {
   const users = [
-    {
-      name: "Luli",
-      age: 13,
-    },
-    {
-      name: "Gi",
-      age: 23,
-    },
+    { id: 1, name: "Luli", age: 13 },
+    { id: 2, name: "Gi", age: 23 },
   ];
   res.json(users);
+});
+
+app.get("/users/:id", (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  //res.send(Number(id));
+  return res.json({
+    userId: Number(id),
+  });
 });
 
 app.use((req, res) => {
