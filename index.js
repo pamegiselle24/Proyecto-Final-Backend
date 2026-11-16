@@ -1,29 +1,35 @@
 import express from "express";
+import cors from "cors";
+import productsRouter from "./src/routes/productsRoutes.js";
 
 const app = express();
 const port = 3000; // process.env.port ?? 1234
 
-app.get("/", (req, res) => {
-  const homePage = "<h1>Bienvenidos a mi Servidor</h1>";
-  res.send(homePage);
-});
+app.use(cors());
 
+/*
 app.get("/users", (req, res) => {
-  const users = [
-    { id: 1, name: "Luli", age: 13 },
-    { id: 2, name: "Gi", age: 23 },
-  ];
-  res.json(users);
+  const { name, age } = req.query;
+  if (name) {
+    const filterUser = users.filter((user) => user.name === name);
+    return res.json(filterUser);
+  }
+  return res.json(users);
 });
 
 app.get("/users/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  //res.send(Number(id));
-  return res.json({
-    userId: Number(id),
-  });
+
+  const userInfo = users.find((user) => Number(id) === user.id);
+  if (!userInfo) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  return res.json(userInfo);
 });
+*/
+
+app.use("/api", productsRouter);
 
 app.use((req, res) => {
   res.status(404).json({
