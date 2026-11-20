@@ -1,20 +1,21 @@
-import { getProducts } from "../models/productsModel.js";
+import {
+  getProducts,
+  getProductById,
+  getProductByCategory,
+} from "../models/productsModel.js";
 
 export const getAllProductsService = async (category) => {
-  const products = await getProducts();
-
   if (category) {
-    const filterProduct = products.filter(
-      (product) => product.category === category,
-    );
+    const filterProduct = await getProductByCategory(category);
     return filterProduct;
   } else {
+    const products = await getProducts();
     return products;
   }
 };
 
 export const getProductByIdService = async (id) => {
-  const products = await getProducts();
+  const product = await getProductById(id);
 
-  return products.find((product) => product.id === Number(id));
+  return product;
 };
