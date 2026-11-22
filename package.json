@@ -1,5 +1,5 @@
 {
-  "name": "clase-10-practica",
+  "name": "Proyecto Final Backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,9 +12,11 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "body-parser": "^2.4.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
     "express": "^5.2.1",
-    "firebase": "^13.4.0"
+    "firebase": "^13.4.0",
+    "jsonwebtoken": "^9.0.3"
   }
 }

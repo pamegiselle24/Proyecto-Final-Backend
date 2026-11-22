@@ -15,11 +15,7 @@ const productsCollection = collection(db, "products");
 export const getProducts = async () => {
   try {
     const querySnapshot = await getDocs(productsCollection);
-    const products = [];
-    querySnapshot.forEach((doc) => {
-      products.push({ id: doc.id, ...doc.data() });
-    });
-    return products;
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
     console.error("Error al obtener la colección products: ", error);
     throw error;

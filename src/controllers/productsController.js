@@ -9,7 +9,7 @@ export const getAllProducts = async (req, res) => {
   try {
     const products = await getAllProductsService(category);
 
-    if (!products /*products.length === 0*/) {
+    if (!products) {
       return res.status(404).json({ message: "Producto/s no encontrado/s" });
     }
 

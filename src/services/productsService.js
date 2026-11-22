@@ -6,8 +6,8 @@ import {
 
 export const getAllProductsService = async (category) => {
   if (category) {
-    const filterProduct = await getProductByCategory(category);
-    return filterProduct;
+    const filterProducts = await getProductByCategory(category);
+    return filterProducts;
   } else {
     const products = await getProducts();
     return products;
@@ -16,6 +16,5 @@ export const getAllProductsService = async (category) => {
 
 export const getProductByIdService = async (id) => {
   const product = await getProductById(id);
-
   return product;
 };
