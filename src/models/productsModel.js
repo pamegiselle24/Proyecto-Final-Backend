@@ -46,3 +46,23 @@ export const getProductByCategory = async (value) => {
     throw error;
   }
 };
+
+export const createProduct = async (productData) => {
+  try {
+    const docRef = await addDoc(productsCollection, productData);
+    return { id: docRef.id, ...productData };
+  } catch (error) {
+    console.error(`Error al crear el producto: `, error);
+    throw error;
+  }
+};
+
+export const deleteProduct = async (id) => {
+  try {
+    const deletedProduct = await deleteDoc(doc(productsCollection, id));
+    return id;
+  } catch (error) {
+    console.error(`Error al eliminar el documento con ID ${id}: `, error);
+    throw error;
+  }
+};

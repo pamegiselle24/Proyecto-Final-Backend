@@ -5,15 +5,9 @@ import { authRouter } from "./src/routes/authRoutes.js";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-app.use(
-  cors(),
-  /*  {
-    origin: "http://localhost:5173"
-}*/
-);
-//app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/auth", authRouter);
@@ -26,6 +20,6 @@ app.use((req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Escuchando en puerto: http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Escuchando en puerto: http://localhost:${PORT}`);
 });
