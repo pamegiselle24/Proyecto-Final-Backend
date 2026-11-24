@@ -11,7 +11,7 @@ export const getAllProducts = async (req, res) => {
   try {
     const products = await getAllProductsService(category);
 
-    if (!products) {
+    if (products.length === 0) {
       return res.status(404).json({ message: "Producto/s no encontrado/s" });
     }
 
